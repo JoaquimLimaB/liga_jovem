@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="pt-br" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ConectaMente: Plataforma de Inclusão e Apoio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        /* Cores personalizadas para um tema inclusivo */
+        .bg-primary-light { background-color: #E0F2F7; /* Azul Claro Suave */ }
+        .text-primary-dark { color: #2C5282; /* Azul Escuro */ }
+        .bg-secondary { background-color: #D1FAE5; /* Verde Menta Suave */ }
+        .text-secondary-dark { color: #065F46; /* Verde Escuro */ }
+        .bg-accent { background-color: #FEE2E2; /* Rosa Claro Suave */ }
+        .text-accent-dark { color: #991B1B; /* Vermelho Escuro */ }
+        .bg-purple-light { background-color: #EDE9FE; /* Roxo Claro */ }
+        .text-purple-dark { color: #5B21B6; /* Roxo Escuro */ }
+        .border-indigo-600 { border-color: #4F46E5; }
+        .text-indigo-700 { color: #4338CA; }
+        .bg-indigo-600 { background-color: #4F46E5; }
+        .hover\:bg-indigo-700:hover { background-color: #4338CA; }
+        .hover\:text-indigo-600:hover { color: #4F46E5; }
+
+        /* Estilos para campos de formulário */
+        input[type="text"], input[type="email"], input[type="password"], textarea, select {
+            border: 1px solid #D1D5DB; /* gray-300 */
+            border-radius: 0.5rem; /* rounded-lg */
+            padding: 0.5rem 1rem; /* px-4 py-2 */
+            width: 100%;
+            box-sizing: border-box; /* Garante que padding não aumente a largura total */
+        }
+        input[type="file"] {
+            padding: 0.5rem 0; /* Ajuste para input file */
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+
+    <!-- Cabeçalho (Header) -->
+    <header class="bg-white shadow-md py-4 px-6 flex justify-between items-center fixed w-full top-0 z-50">
+        <div class="flex items-center space-x-3">
+            <!-- Logo ou Título Simples -->
+            <svg class="h-8 w-8 text-indigo-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
+            </svg>
+            <h1 class="text-2xl font-bold text-indigo-700">ConectaMente</h1>
+        </div>
+        <nav>
+            <ul class="flex space-x-6 items-center">
+                <li><a href="#home" class="text-gray-600 hover:text-indigo-600 font-medium transition duration-300">Início</a></li>
+                <li><a href="#professores" class="text-gray-600 hover:text-indigo-600 font-medium transition duration-300">Para Professores</a></li>
+                <li><a href="#pais" class="text-gray-600 hover:text-indigo-600 font-medium transition duration-300">Para Pais</a></li>
+                <li><a href="#sobre" class="text-gray-600 hover:text-indigo-600 font-medium transition duration-300">Sobre</a></li>
+                <li><a href="#contato" class="text-gray-600 hover:text-indigo-600 font-medium transition duration-300">Contato</a></li>
+                <li><a href="#login" class="bg-indigo-500 text-white px-4 py-2 rounded-full text-sm font-semibold hover:bg-indigo-600 transition duration-300">Login/Cadastro</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Conteúdo Principal -->
+    <main class="mt-20 py-8 md:py-12">
+        <div class="container mx-auto px-4">
+
+            <!-- Seção Hero (Banner Principal) -->
+            <section id="home" class="bg-primary-light py-16 md:py-24 text-center rounded-xl shadow-inner mb-8">
+                <div class="container mx-auto px-4">
+                    <h2 class="text-4xl md:text-6xl font-extrabold text-primary-dark leading-tight mb-6">
+                        Conectando Mentes, Construindo Inclusão.
+                    </h2>
+                    <p class="text-xl md:text-2xl text-gray-700 max-w-3xl mx-auto mb-10">
+                        Uma plataforma colaborativa para capacitar educadores e apoiar famílias no universo do autismo.
+                    </p>
+                    <div class="space-x-4">
+                        <a href="#professores" class="bg-indigo-600 text-white px-8 py-3 rounded-full font-semibold text-lg hover:bg-indigo-700 transition duration-300 shadow-lg">
+                            Acesse Treinamentos
+                        </a>
+                        <a href="#pais" class="bg-white text-indigo-600 border border-indigo-600 px-8 py-3 rounded-full font-semibold text-lg hover:bg-indigo-50 transition duration-300 shadow-lg">
+                            Conecte-se com Outros Pais
+                        </a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Seção Destaques de Cursos -->
+            <section class="py-16 md:py-24 bg-white rounded-xl shadow-md mt-8">
+                <div class="container mx-auto px-4">
+                    <h3 class="text-3xl md:text-4xl font-bold text-center text-indigo-700 mb-12">
+                        Cursos em Destaque para Professores
+                    </h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                        <!-- Exemplo de Curso -->
+                        <div class="bg-sky-50 p-6 rounded-xl shadow-lg border border-sky-200">
+                            <h4 class="text-xl font-semibold text-sky-800 mb-3">Metodologias Ativas para Inclusão</h4>
+                            <p class="text-gray-600 text-sm mb-4">Aprenda técnicas como Sala de Aula Invertida e Aprendizagem Baseada em Projetos, adaptadas para a inclusão de alunos com TEA.</p>
+                            <span class="inline-block bg-sky-200 text-sky-800 text-xs px-2 py-1 rounded-full">40h</span>
+                            <a href="#lista-cursos" class="block mt-5 text-center text-sky-600 hover:text-sky-800 font-medium">Ver Detalhes &rarr;</a>
+                        </div>
+                        <!-- Exemplo de Curso -->
+                        <div class="bg-sky-50 p-6 rounded-xl shadow-lg border border-sky-200">
+                            <h4 class="text-xl font-semibold text-sky-800 mb-3">Tecnologias Assistivas na Educação</h4>
+                            <p class="text-gray-600 text-sm mb-4">Descubra ferramentas digitais e softwares que auxiliam no aprendizado de alunos com diversas necessidades.</p>
+                            <span class="inline-block bg-sky-200 text-sky-800 text-xs px-2 py-1 rounded-full">30h</span>
+                            <a href="#lista-cursos" class="block mt-5 text-center text-sky-600 hover:text-sky-800 font-medium">Ver Detalhes &rarr;</a>
+                        </div>
+                        <!-- Exemplo de Curso -->
+                        <div class="bg-sky-50 p-6 rounded-xl shadow-lg border border-sky-200">
+                            <h4 class="text-xl font-semibold text-sky-800 mb-3">Comunicação Aumentativa e Alternativa</h4>
+                            <p class="text-gray-600 text-sm mb-4">Estratégias e ferramentas para apoiar a comunicação de alunos não verbais.</p>
+                            <span class="inline-block bg-sky-200 text-sky-800 text-xs px-2 py-1 rounded-full">25h</span>
+                            <a href="#lista-cursos" class="block mt-5 text-center text-sky-600 hover:text-sky-800 font-medium">Ver Detalhes &rarr;</a>
+                        </div>
+                    </div>
+                    <div class="text-center mt-12">
+                        <a href="#lista-cursos" class="bg-indigo-500 text-white px-6 py-3 rounded-full font-semibold hover:bg-indigo-600 transition duration-300">Ver Todos os Cursos</a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Seção Destaques de Vídeos -->
+            <section class="py-16 md:py-24 bg-gray-100 rounded-xl shadow-md mt-8">
+                <div class="container mx-auto px-4">
+                    <h3 class="text-3xl md:text-4xl font-bold text-center text-indigo-700 mb-12">
+                        Vídeos de Atividades Recentes
+                    </h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                        <!-- Exemplo de Vídeo -->
+                        <div class="bg-white rounded-lg shadow-md border border-gray-200 overflow-hidden">
+                            <img src="https://placehold.co/400x225/E0F2F7/2C5282?text=Video+Atividade+1" alt="Video de Atividade Pedagógica" class="w-full h-48 object-cover">
+                            <div class="p-4">
+                                <h5 class="text-lg font-semibold text-indigo-700">Brincadeiras Inclusivas no Pátio</h5>
+                                <p class="text-gray-600 text-sm mt-1">Por: Prof. Ana Silva</p>
+                                <p class="text-gray-500 text-xs mt-2">Uma atividade lúdica para integrar todos os alunos no recreio.</p>
+                                <a href="#video-detail-1" class="block mt-4 text-indigo-600 hover:text-indigo-800 font-medium text-sm">Ver Detalhes &rarr;</a>
+                            </div>
+                        </div>
+                        <!-- Exemplo de Vídeo -->
+                        <div class="bg-white rounded-lg shadow-md border border-gray-200 overflow-hidden">
+                            <img src="https://placehold.co/400x225/E0F2F7/2C5282?text=Video+Atividade+2" alt="Video de Atividade Pedagógica" class="w-full h-48 object-cover">
+                            <div class="p-4">
+                                <h5 class="text-lg font-semibold text-indigo-700">Fichas Visuais de Rotina Diária</h5>
+                                <p class="text-gray-600 text-sm mt-1">Por: Prof. João Santos</p>
+                                <p class="text-gray-500 text-xs mt-2">Material para auxiliar na organização da rotina de alunos com TEA.</p>
+                                <a href="#video-detail-2" class="block mt-4 text-indigo-600 hover:text-indigo-800 font-medium text-sm">Ver Detalhes &rarr;</a>
+                            </div>
+                        </div>
+                        <!-- Exemplo de Vídeo -->
+                        <div class="bg-white rounded-lg shadow-md border border-gray-200 overflow-hidden">
+                            <img src="https://placehold.co/400x225/E0F2F7/2C5282?text=Video+Atividade+3" alt="Video de Atividade Pedagógica" class="w-full h-48 object-cover">
+                            <div class="p-4">
+                                <h5 class="text-lg font-semibold text-indigo-700">Inclusão Através da Arte-Terapia</h5>
+                                <p class="text-gray-600 text-sm mt-1">Por: Prof. Carla Dias</p>
+                                <p class="text-gray-500 text-xs mt-2">Projeto de arte-terapia que promove a expressão e interação de alunos diversos.</p>
+                                <a href="#video-detail-3" class="block mt-4 text-indigo-600 hover:text-indigo-800 font-medium text-sm">Ver Detalhes &rarr;</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="text-center mt-12">
+                        <a href="#lista-videos" class="bg-indigo-500 text-white px-6 py-3 rounded-full font-semibold hover:bg-indigo-600 transition duration-300">Ver Todos os Vídeos</a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Seção Para Professores (Detalhes) -->
+            <section id="professores" class="py-16 md:py-24 bg-white rounded-xl shadow-md mt-8">
+                <div class="container mx-auto px-4">
+                    <h3 class="text-3xl md:text-4xl font-bold text-center text-indigo-700 mb-12">
+                        Para Professores: Capacitação e Colaboração
+                    </h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+                        <!-- Card 1: Treinamentos -->
+                        <div class="bg-sky-50 p-6 rounded-xl shadow-lg border border-sky-200 hover:shadow-xl transition duration-300">
+                            <div class="text-sky-600 mb-4">
+                                <svg class="h-10 w-10 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5s3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18s-3.332.477-4.5 1.253" />
+                                </svg>
+                            </div>
+                            <h4 class="text-xl font-semibold text-sky-800 mb-3 text-center">Trilhas de Capacitação</h4>
+                            <p class="text-gray-600 text-center text-sm">
+                                Acesse videoaulas e módulos completos sobre metodologias inclusivas e tecnologias educacionais.
+                            </p>
+                            <a href="#lista-cursos" class="block mt-5 text-center text-sky-600 hover:text-sky-800 font-medium">Ver Cursos &rarr;</a>
+                        </div>
+
+                        <!-- Card 2: Compartilhar Vídeos -->
+                        <div class="bg-purple-50 p-6 rounded-xl shadow-lg border border-purple-200 hover:shadow-xl transition duration-300">
+                            <div class="text-purple-600 mb-4">
+                                <svg class="h-10 w-10 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12" />
+                                </svg>
+                            </div>
+                            <h4 class="text-xl font-semibold text-purple-800 mb-3 text-center">Compartilhe Suas Atividades</h4>
+                            <p class="text-gray-600 text-center text-sm">
+                                Grave e publique vídeos de atividades práticas e projetos de sucesso da sua sala de aula.
+                            </p>
+                            <a href="#upload-video-section" class="block mt-5 text-center text-purple-600 hover:text-purple-800 font-medium">Enviar Vídeo &rarr;</a>
+                        </div>
+
+                        <!-- Card 3: Biblioteca de Atividades -->
+                        <div class="bg-green-50 p-6 rounded-xl shadow-lg border border-green-200 hover:shadow-xl transition duration-300">
+                            <div class="text-green-600 mb-4">
+                                <svg class="h-10 w-10 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
+                                </svg>
+                            </div>
+                            <h4 class="text-xl font-semibold text-green-800 mb-3 text-center">Biblioteca de Materiais</h4>
+                            <p class="text-gray-600 text-center text-sm">
+                                Explore e baixe planos de aula, materiais didáticos e projetos inovadores compartilhados.
+                            </p>
+                            <a href="#lista-videos" class="block mt-5 text-center text-green-600 hover:text-green-800 font-medium">Explorar &rarr;</a>
+                        </div>
+                    </div>
+
+                    <!-- Subseção: Trilhas de Capacitação (Lista de Cursos) -->
+                    <div id="lista-cursos" class="bg-sky-100 p-8 rounded-xl shadow-inner mb-16">
+                        <h4 class="text-2xl font-bold text-sky-800 mb-6 text-center">Trilhas de Capacitação e Treinamentos</h4>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <!-- Curso Exemplo 1 -->
+                            <div class="bg-white p-5 rounded-lg shadow-md border border-sky-300">
+                                <h5 class="text-lg font-semibold text-sky-700">Metodologias Ativas para Inclusão</h5>
+                                <p class="text-gray-600 text-sm mt-2">Aprenda técnicas como Sala de Aula Invertida e Aprendizagem Baseada em Projetos, adaptadas para a inclusão de alunos com TEA.</p>
+                                <span class="inline-block bg-sky-200 text-sky-800 text-xs px-2 py-1 rounded-full mt-3">4 Módulos</span>
+                                <span class="inline-block bg-sky-200 text-sky-800 text-xs px-2 py-1 rounded-full mt-3 ml-2">Certificado</span>
+                                <a href="#" class="block mt-4 text-sky-600 hover:text-sky-800 font-medium text-sm">Iniciar Curso &rarr;</a>
+                            </div>
+                            <!-- Curso Exemplo 2 -->
+                            <div class="bg-white p-5 rounded-lg shadow-md border border-sky-300">
+                                <h5 class="text-lg font-semibold text-sky-700">Tecnologias Assistivas na Educação</h5>
+                                <p class="text-gray-600 text-sm mt-2">Descubra ferramentas digitais e softwares que auxiliam no aprendizado de alunos com diversas necessidades.</p>
+                                <span class="inline-block bg-sky-200 text-sky-800 text-xs px-2 py-1 rounded-full mt-3">3 Módulos</span>
+                                <span class="inline-block bg-sky-200 text-sky-800 text-xs px-2 py-1 rounded-full mt-3 ml-2">Webinar</span>
+                                <a href="#" class="block mt-4 text-sky-600 hover:text-sky-800 font-medium text-sm">Iniciar Curso &rarr;</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Subseção: Compartilhar Suas Atividades (Formulário de Upload de Vídeo) -->
+                    <div id="upload-video-section" class="bg-purple-100 p-8 rounded-xl shadow-inner mb-16">
+                        <h4 class="text-2xl font-bold text-purple-800 mb-6 text-center">Envie Seu Vídeo de Atividade!</h4>
+                        <p class="text-gray-700 mb-6 text-center">Compartilhe suas práticas pedagógicas inovadoras com a comunidade ConectaMente.</p>
+                        <form class="max-w-xl mx-auto space-y-4">
+                            <div>
+                                <label for="titulo-video" class="block text-gray-700 text-sm font-semibold mb-2">Título do Vídeo:</label>
+                                <input type="text" id="titulo-video" class="w-full px-4 py-2 border border-purple-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500" placeholder="Ex: Atividade Sensorial com Massinha">
+                            </div>
+                            <div>
+                                <label for="descricao-video" class="block text-gray-700 text-sm font-semibold mb-2">Descrição (Conte o que fez e o impacto):</label>
+                                <textarea id="descricao-video" rows="4" class="w-full px-4 py-2 border border-purple-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500" placeholder="Descreva a atividade, os objetivos e os resultados com os alunos."></textarea>
+                            </div>
+                            <div>
+                                <label for="arquivo-video" class="block text-gray-700 text-sm font-semibold mb-2">Selecione o Arquivo de Vídeo (.mp4, .mov):</label>
+                                <input type="file" id="arquivo-video" accept="video/mp4,video/quicktime" class="w-full text-gray-700 text-sm file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-purple-500 file:text-white hover:file:bg-purple-600">
+                            </div>
+                            <div class="text-center">
+                                <button type="submit" class="bg-purple-600 text-white px-8 py-3 rounded-full font-semibold text-lg hover:bg-purple-700 transition duration-300 shadow-lg">
+                                    Enviar Vídeo
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+
+                    <!-- Subseção: Biblioteca de Atividades (Display de Vídeos e Materiais) -->
+                    <div id="lista-videos" class="bg-green-100 p-8 rounded-xl shadow-inner">
+                        <h4 class="text-2xl font-bold text-green-800 mb-6 text-center">Biblioteca de Atividades e Projetos</h4>
+                        <p class="text-gray-700 mb-8 text-center">Explore vídeos e materiais compartilhados por outros professores. Deixe seu comentário!</p>
+                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                            <!-- Vídeo/Material Exemplo 1 -->
+                            <div class="bg-white rounded-lg shadow-md border border-green-300 overflow-hidden">
+                                <img src="https://placehold.co/400x225/D1FAE5/065F46?text=Video+Atividade+1" alt="Video de Atividade Pedagógica" class="w-full h-48 object-cover">
+                                <div class="p-4">
+                                    <h5 class="text-lg font-semibold text-green-700">Brincadeiras Inclusivas no Pátio</h5>
+                                    <p class="text-gray-600 text-sm mt-1">Por: Prof. Ana Silva</p>
+                                    <p class="text-gray-500 text-xs mt-2">Uma atividade lúdica para integrar todos os alunos no recreio.</p>
+                                    <div class="mt-4 flex justify-between items-center">
+                                        <a href="#video-detail-1" class="text-green-600 hover:text-green-800 font-medium text-sm">Ver Detalhes &rarr;</a>
+                                        <span class="text-gray-500 text-xs">5 Comentários</span>
+                                    </div>
+                                    <!-- Formulário de Comentário (simplificado) -->
+                                    <div class="mt-4 pt-4 border-t border-gray-200">
+                                        <textarea class="w-full px-3 py-2 text-sm border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-green-500" rows="2" placeholder="Deixe seu comentário..."></textarea>
+                                        <button class="mt-2 bg-green-500 text-white px-4 py-2 rounded-md text-sm hover:bg-green-600 transition duration-300">Comentar</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Vídeo/Material Exemplo 2 -->
+                            <div class="bg-white rounded-lg shadow-md border border-green-300 overflow-hidden">
+                                <img src="https://placehold.co/400x225/D1FAE5/065F46?text=Material+Didatico+TEA" alt="Material Didático TEA" class="w-full h-48 object-cover">
+                                <div class="p-4">
+                                    <h5 class="text-lg font-semibold text-green-700">Fichas Visuais de Rotina Diária</h5>
+                                    <p class="text-gray-600 text-sm mt-1">Por: Prof. João Santos</p>
+                                    <p class="text-gray-500 text-xs mt-2">Material para auxiliar na organização da rotina de alunos com TEA.</p>
+                                    <div class="mt-4 flex justify-between items-center">
+                                        <a href="#" class="text-green-600 hover:text-green-800 font-medium text-sm">Ver Detalhes &rarr;</a>
+                                        <span class="text-gray-500 text-xs">8 Comentários</span>
+                                    </div>
+                                     <!-- Formulário de Comentário (simplificado) -->
+                                     <div class="mt-4 pt-4 border-t border-gray-200">
+                                        <textarea class="w-full px-3 py-2 text-sm border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-green-500" rows="2" placeholder="Deixe seu comentário..."></textarea>
+                                        <button class="mt-2 bg-green-500 text-white px-4 py-2 rounded-md text-sm hover:bg-green-600 transition duration-300">Comentar</button>
+                                    </div>
+                                </div>
+                            </div>
+                             <!-- Vídeo/Material Exemplo 3 -->
+                             <div class="bg-white rounded-lg shadow-md border border-green-300 overflow-hidden">
+                                <img src="https://placehold.co/400x225/D1FAE5/065F46?text=Projeto+Inclusao+Arte" alt="Projeto Inclusão Arte" class="w-full h-48 object-cover">
+                                <div class="p-4">
+                                    <h5 class="text-lg font-semibold text-green-700">Inclusão Através da Arte-Terapia</h5>
+                                    <p class="text-gray-600 text-sm mt-1">Por: Prof. Carla Dias</p>
+                                    <p class="text-gray-500 text-xs mt-2">Projeto de arte-terapia que promove a expressão e interação de alunos diversos.</p>
+                                    <div class="mt-4 flex justify-between items-center">
+                                        <a href="#" class="text-green-600 hover:text-green-800 font-medium text-sm">Ver Detalhes &rarr;</a>
+                                        <span class="text-gray-500 text-xs">3 Comentários</span>
+                                    </div>
+                                     <!-- Formulário de Comentário (simplificado) -->
+                                     <div class="mt-4 pt-4 border-t border-gray-200">
+                                        <textarea class="w-full px-3 py-2 text-sm border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-green-500" rows="2" placeholder="Deixe seu comentário..."></textarea>
+                                        <button class="mt-2 bg-green-500 text-white px-4 py-2 rounded-md text-sm hover:bg-green-600 transition duration-300">Comentar</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Seção Para Pais -->
+            <section id="pais" class="py-16 md:py-24 bg-primary-light rounded-xl shadow-md mt-8">
+                <div class="container mx-auto px-4">
+                    <h3 class="text-3xl md:text-4xl font-bold text-center text-primary-dark mb-12">
+                        Para Pais: Comunidade de Apoio e Troca
+                    </h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto mb-16">
+                        <!-- Card 1: Fórum de Histórias e Dúvidas -->
+                        <div class="bg-white p-6 rounded-xl shadow-lg border border-gray-200 hover:shadow-xl transition duration-300">
+                            <div class="text-indigo-600 mb-4">
+                                <svg class="h-10 w-10 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z" />
+                                </svg>
+                            </div>
+                            <h4 class="text-xl font-semibold text-indigo-800 mb-3 text-center">Fórum de Histórias e Dúvidas</h4>
+                            <p class="text-gray-600 text-center text-sm">
+                                Conecte-se com outras famílias, compartilhe experiências, desafios e conquistas em um ambiente seguro.
+                            </p>
+                            <a href="#forum-section" class="block mt-5 text-center text-indigo-600 hover:text-indigo-800 font-medium">Acessar Fórum &rarr;</a>
+                        </div>
+
+                        <!-- Card 2: Recursos e Guias Práticos -->
+                        <div class="bg-white p-6 rounded-xl shadow-lg border border-gray-200 hover:shadow-xl transition duration-300">
+                            <div class="text-indigo-600 mb-4">
+                                <svg class="h-10 w-10 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5s3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18s-3.332.477-4.5 1.253" />
+                                </svg>
+                            </div>
+                            <h4 class="text-xl font-semibold text-indigo-800 mb-3 text-center">Recursos e Guias Práticos</h4>
+                            <p class="text-gray-600 text-center text-sm">
+                                Encontre artigos, guias e materiais de apoio sobre desenvolvimento, direitos e bem-estar.
+                            </p>
+                            <a href="#lista-recursos-pais" class="block mt-5 text-center text-indigo-600 hover:text-indigo-800 font-medium">Ver Recursos &rarr;</a>
+                        </div>
+                    </div>
+
+                    <!-- Subseção: Fórum de Histórias e Dúvidas -->
+                    <div id="forum-section" class="bg-indigo-100 p-8 rounded-xl shadow-inner mt-16 mb-16">
+                        <h4 class="text-2xl font-bold text-indigo-800 mb-6 text-center">Fórum da Comunidade: Compartilhe e Apoie</h4>
+                        <p class="text-gray-700 mb-8 text-center">Participe das discussões ou inicie um novo tópico.</p>
+                        <!-- Novo Tópico do Fórum (Formulário) -->
+                        <div class="mb-8 p-6 bg-white rounded-lg shadow-md border border-indigo-200">
+                            <h5 class="text-xl font-semibold text-indigo-700 mb-4">Iniciar Novo Tópico</h5>
+                            <form class="space-y-4">
+                                <div>
+                                    <label for="titulo-topico" class="block text-gray-700 text-sm font-semibold mb-2">Título do Tópico:</label>
+                                    <input type="text" id="titulo-topico" class="w-full px-4 py-2 border border-indigo-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500" placeholder="Ex: Dicas para rotina de sono">
+                                </div>
+                                <div>
+                                    <label for="conteudo-topico" class="block text-gray-700 text-sm font-semibold mb-2">Sua Mensagem:</label>
+                                    <textarea id="conteudo-topico" rows="5" class="w-full px-4 py-2 border border-indigo-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500" placeholder="Compartilhe sua história ou dúvida aqui."></textarea>
+                                </div>
+                                <div class="text-center">
+                                    <button type="submit" class="bg-indigo-600 text-white px-8 py-3 rounded-full font-semibold text-lg hover:bg-indigo-700 transition duration-300 shadow-lg">
+                                        Publicar Tópico
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                        <!-- Tópico do Fórum Exemplo 1 -->
+                        <div class="bg-white p-6 rounded-lg shadow-md border border-indigo-200 mb-4">
+                            <h5 class="text-lg font-semibold text-indigo-700">Desafios na Comunicação Não Verbal</h5>
+                            <p class="text-gray-600 text-sm mt-1">Por: Maria Oliveira - há 2 dias</p>
+                            <p class="text-gray-500 text-xs mt-2">Meu filho tem dificuldades em se expressar. Alguém tem dicas de atividades ou ferramentas?</p>
+                            <div class="mt-4 pt-4 border-t border-gray-200">
+                                <p class="text-gray-700 text-sm mb-2">**Comentários:**</p>
+                                <div class="bg-gray-50 p-3 rounded-md mb-2">
+                                    <p class="text-gray-800 text-sm">**João Silva:** Tentei PECS com meu filho e funcionou muito bem! Existem apps também.</p>
+                                </div>
+                                <div class="bg-gray-50 p-3 rounded-md">
+                                    <p class="text-gray-800 text-sm">**Ana Costa:** A terapia ocupacional tem ajudado muito na comunicação alternativa.</p>
+                                </div>
+                                <textarea class="w-full px-3 py-2 text-sm border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-indigo-500 mt-3" rows="2" placeholder="Adicione seu comentário..."></textarea>
+                                <button class="mt-2 bg-indigo-500 text-white px-4 py-2 rounded-md text-sm hover:bg-indigo-600 transition duration-300">Comentar</button>
+                            </div>
+                        </div>
+                        <!-- Tópico do Fórum Exemplo 2 -->
+                        <div class="bg-white p-6 rounded-lg shadow-md border border-indigo-200">
+                            <h5 class="text-lg font-semibold text-indigo-700">Rotinas Visuais: Como Organizar o Dia a Dia?</h5>
+                            <p class="text-gray-600 text-sm mt-1">Por: Pedro Almeida - há 5 dias</p>
+                            <p class="text-gray-500 text-xs mt-2">Minha filha se beneficia muito de rotinas visuais. Quais apps ou materiais vocês usam?</p>
+                            <div class="mt-4 pt-4 border-t border-gray-200">
+                                <p class="text-gray-700 text-sm mb-2">**Comentários:**</p>
+                                <div class="bg-gray-50 p-3 rounded-md mb-2">
+                                    <p class="text-gray-800 text-sm">**Carla Souza:** Eu uso o app 'Visual Schedule' e imprimo as imagens. Ajuda demais!</p>
+                                </div>
+                                <textarea class="w-full px-3 py-2 text-sm border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-indigo-500 mt-3" rows="2" placeholder="Adicione seu comentário..."></textarea>
+                                <button class="mt-2 bg-indigo-500 text-white px-4 py-2 rounded-md text-sm hover:bg-indigo-600 transition duration-300">Comentar</button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Subseção: Recursos e Guias Práticos -->
+                    <div id="lista-recursos-pais" class="bg-indigo-100 p-8 rounded-xl shadow-inner mt-16">
+                        <h4 class="text-2xl font-bold text-indigo-800 mb-6 text-center">Recursos e Guias Práticos para Pais</h4>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div class="bg-white p-5 rounded-lg shadow-md border border-indigo-300">
+                                <h5 class="text-lg font-semibold text-indigo-700">Guia Completo: Direitos da Pessoa Autista</h5>
+                                <p class="text-gray-600 text-sm mt-2">Um guia essencial sobre os direitos legais e benefícios para pessoas com TEA e suas famílias.</p>
+                                <a href="#" class="block mt-4 text-indigo-600 hover:text-indigo-800 font-medium text-sm">Baixar PDF &rarr;</a>
+                            </div>
+                            <div class="bg-white p-5 rounded-lg shadow-md border border-indigo-300">
+                                <h5 class="text-lg font-semibold text-indigo-700">Artigo: Estratégias para Lidar com Crises Sensoriais</h5>
+                                <p class="text-gray-600 text-sm mt-2">Dicas e técnicas para ajudar a gerenciar e prevenir momentos de sobrecarga sensorial.</p>
+                                <a href="#" class="block mt-4 text-indigo-600 hover:text-indigo-800 font-medium text-sm">Ler Artigo &rarr;</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Seção Login/Cadastro (Duplicada para ser um ponto de ancoragem) -->
+            <section id="login" class="py-16 md:py-24 bg-gray-100 rounded-xl shadow-md mt-8">
+                <div class="container mx-auto px-4 max-w-xl bg-white p-8 rounded-xl shadow-lg border border-gray-200">
+                    <h3 class="text-3xl font-bold text-center text-indigo-700 mb-8">Acesse ou Cadastre-se</h3>
+                    <div class="flex justify-center mb-6 space-x-4">
+                        <button class="px-6 py-2 rounded-full font-semibold text-lg bg-indigo-600 text-white hover:bg-indigo-700 transition duration-300 shadow-md">Login</button>
+                        <button class="px-6 py-2 rounded-full font-semibold text-lg bg-gray-200 text-gray-800 hover:bg-gray-300 transition duration-300 shadow-md">Cadastro</button>
+                    </div>
+                    <form class="space-y-6">
+                        <div>
+                            <label for="email-login" class="block text-gray-700 text-sm font-semibold mb-2">E-mail:</label>
+                            <input type="email" id="email-login" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500" placeholder="seuemail@exemplo.com">
+                        </div>
+                        <div>
+                            <label for="senha-login" class="block text-gray-700 text-sm font-semibold mb-2">Senha:</label>
+                            <input type="password" id="senha-login" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500" placeholder="********">
+                        </div>
+                        <div class="text-center">
+                            <button type="submit" class="bg-indigo-600 text-white px-8 py-3 rounded-full font-semibold text-lg hover:bg-indigo-700 transition duration-300 shadow-lg">
+                                Entrar
+                            </button>
+                        </div>
+                        <p class="text-center text-sm text-gray-600 mt-4">
+                            Ainda não tem conta? <a href="#cadastro-section" class="text-indigo-600 hover:underline">Cadastre-se aqui</a>.
+                        </p>
+                    </form>
+                </div>
+            </section>
+
+            <!-- Seção Cadastro (Duplicada para ser um ponto de ancoragem) -->
+            <section id="cadastro-section" class="py-16 md:py-24 bg-gray-50 rounded-xl shadow-md mt-8">
+                <div class="container mx-auto px-4 max-w-xl bg-white p-8 rounded-xl shadow-lg border border-gray-200">
+                    <h3 class="text-3xl font-bold text-center text-indigo-700 mb-8">Crie sua Conta</h3>
+                    <form class="space-y-6">
+                        <div>
+                            <label for="username-register" class="block text-gray-700 text-sm font-semibold mb-2">Nome de Usuário:</label>
+                            <input type="text" id="username-register" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500" placeholder="Seu nome de usuário">
+                        </div>
+                        <div>
+                            <label for="email-register" class="block text-gray-700 text-sm font-semibold mb-2">E-mail:</label>
+                            <input type="email" id="email-register" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500" placeholder="seuemail@exemplo.com">
+                        </div>
+                        <div>
+                            <label for="password-register" class="block text-gray-700 text-sm font-semibold mb-2">Senha:</label>
+                            <input type="password" id="password-register" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500" placeholder="********">
+                        </div>
+                        <div>
+                            <label for="confirm-password-register" class="block text-gray-700 text-sm font-semibold mb-2">Confirme a Senha:</label>
+                            <input type="password" id="confirm-password-register" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500" placeholder="********">
+                        </div>
+                        <div>
+                            <label for="tipo-usuario-register" class="block text-gray-700 text-sm font-semibold mb-2">Você é:</label>
+                            <select id="tipo-usuario-register" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                                <option value="PAI">Pai/Responsável</option>
+                                <option value="PROFESSOR">Professor</option>
+                            </select>
+                        </div>
+                        <div class="text-center">
+                            <button type="submit" class="bg-indigo-600 text-white px-8 py-3 rounded-full font-semibold text-lg hover:bg-indigo-700 transition duration-300 shadow-lg">
+                                Cadastrar
+                            </button>
+                        </div>
+                        <p class="text-center text-sm text-gray-600 mt-4">
+                            Já tem conta? <a href="#login" class="text-indigo-600 hover:underline">Faça login aqui</a>.
+                        </p>
+                    </form>
+                </div>
+            </section>
+
+            <!-- Seção Sobre Nós -->
+            <section id="sobre" class="py-16 md:py-24 bg-white rounded-xl shadow-md mt-8">
+                <div class="container mx-auto px-4 text-center">
+                    <h3 class="text-3xl md:text-4xl font-bold text-indigo-700 mb-8">Sobre a ConectaMente</h3>
+                    <p class="text-lg text-gray-700 max-w-3xl mx-auto mb-6">
+                        A ConectaMente nasceu da paixão por transformar a educação e o apoio a pessoas autistas. Acreditamos que, com a colaboração entre educadores e pais, podemos criar um ambiente de aprendizado mais inclusivo e eficaz para todos.
+                    </p>
+                    <p class="text-lg text-gray-700 max-w-3xl mx-auto">
+                        Nossa plataforma é um espaço seguro para compartilhar conhecimentos, experiências e recursos, construindo uma comunidade forte e engajada. Juntos, podemos fazer a diferença na vida de muitas famílias e alunos.
+                    </p>
+                </div>
+            </section>
+
+            <!-- Seção Contato -->
+            <section id="contato" class="py-16 md:py-24 bg-gray-100 rounded-xl shadow-md mt-8">
+                <div class="container mx-auto px-4 max-w-2xl bg-white p-8 rounded-xl shadow-lg border border-gray-200">
+                    <h3 class="text-3xl font-bold text-center text-indigo-700 mb-8">Entre em Contato</h3>
+                    <form class="space-y-6">
+                        <div>
+                            <label for="nome-contato" class="block text-gray-700 text-sm font-semibold mb-2">Seu Nome:</label>
+                            <input type="text" id="nome-contato" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500" placeholder="Seu nome completo">
+                        </div>
+                        <div>
+                            <label for="email-contato" class="block text-gray-700 text-sm font-semibold mb-2">Seu E-mail:</label>
+                            <input type="email" id="email-contato" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500" placeholder="seuemail@exemplo.com">
+                        </div>
+                        <div>
+                            <label for="mensagem-contato" class="block text-gray-700 text-sm font-semibold mb-2">Mensagem:</label>
+                            <textarea id="mensagem-contato" rows="5" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500" placeholder="Escreva sua mensagem aqui..."></textarea>
+                        </div>
+                        <div class="text-center">
+                            <button type="submit" class="bg-indigo-600 text-white px-8 py-3 rounded-full font-semibold text-lg hover:bg-indigo-700 transition duration-300 shadow-lg">
+                                Enviar Mensagem
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </section>
+
+            <!-- Seção Chamada para Ação Final -->
+            <section class="py-16 md:py-24 bg-indigo-700 text-white text-center rounded-t-xl shadow-inner mt-8">
+                <div class="container mx-auto px-4">
+                    <h3 class="text-3xl md:text-4xl font-bold mb-6">Junte-se à Nossa Comunidade ConectaMente!</h3>
+                    <p class="text-lg md:text-xl max-w-2xl mx-auto mb-8">
+                        Faça parte de um movimento que transforma a educação e o apoio a pessoas autistas.
+                    </p>
+                    <a href="#cadastro-section" class="bg-white text-indigo-700 px-8 py-3 rounded-full font-semibold text-lg hover:bg-gray-100 transition duration-300 shadow-lg">
+                        Cadastre-se Gratuitamente
+                    </a>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Rodapé (Footer) -->
+    <footer class="bg-gray-900 text-gray-400 py-8 px-6 text-center mt-auto">
+        <div class="container mx-auto">
+            <p>&copy; 2025 ConectaMente. Todos os direitos reservados.</p>
+            <div class="flex justify-center space-x-6 mt-4">
+                <a href="#" class="hover:text-white transition duration-300">Privacidade</a>
+                <a href="#" class="hover:text-white transition duration-300">Termos de Uso</a>
+                <a href="#" class="hover:text-white transition duration-300">Fale Conosco</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling para links de navegação
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+
+</body>
+</html>
