@@ -7,16 +7,14 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
-        body { font-family: 'Inter', sans-serif; }
-        /* Cores personalizadas para um tema inclusivo */
-        .bg-primary-light { background-color: #E0F2F7; /* Azul Claro Suave */ }
-        .text-primary-dark { color: #2C5282; /* Azul Escuro */ }
-        .bg-secondary { background-color: #D1FAE5; /* Verde Menta Suave */ }
-        .text-secondary-dark { color: #065F46; /* Verde Escuro */ }
-        .bg-accent { background-color: #FEE2E2; /* Rosa Claro Suave */ }
-        .text-accent-dark { color: #991B1B; /* Vermelho Escuro */ }
-        .bg-purple-light { background-color: #EDE9FE; /* Roxo Claro */ }
-        .text-purple-dark { color: #5B21B6; /* Roxo Escuro */ }
+        body { font-family: 'Inter', sans-serif; background-color: #FFFFFF; } /* Fundo branco padrão para o corpo */
+        /* Cores uniformes baseadas em indigo e cinza */
+        .bg-primary-light { background-color: #EEF2FF; /* Indigo 50 */ }
+        .text-primary-dark { color: #3730A3; /* Indigo 800 */ }
+        .bg-section-alt { background-color: #F9FAFB; /* Gray 50 para seções alternadas */ }
+        .text-main { color: #1F2937; /* Gray 900 */ } /* Cor principal de texto */
+
+        /* Cores para botões e acentos (mantendo a consistência do indigo) */
         .border-indigo-600 { border-color: #4F46E5; }
         .text-indigo-700 { color: #4338CA; }
         .bg-indigo-600 { background-color: #4F46E5; }
@@ -34,12 +32,54 @@
         input[type="file"] {
             padding: 0.5rem 0; /* Ajuste para input file */
         }
+
+        /* Estilos para cards de preço - Padronizados */
+        .price-card {
+            @apply bg-gray-800 text-white rounded-xl shadow-xl p-8 flex flex-col items-center justify-between;
+            min-height: 480px; /* Altura mínima para alinhar os cards */
+            border: 2px solid transparent; /* Borda padrão transparente */
+        }
+        .price-card.highlight {
+            @apply border-indigo-500; /* Borda destacada para o plano do meio */
+        }
+        .price-card-header {
+            @apply text-center mb-6;
+        }
+        .price-card-header h4 {
+            @apply text-2xl font-bold mb-2;
+        }
+        .price-card-price {
+            @apply text-5xl font-extrabold mb-4;
+        }
+        .price-card-features {
+            @apply text-left w-full space-y-3 mb-8;
+        }
+        .price-card-features li {
+            @apply flex items-center;
+        }
+        .price-card-features svg {
+            @apply w-6 h-6 mr-2;
+        }
+        .price-card-button {
+            @apply w-full py-3 rounded-md font-semibold text-lg transition duration-300;
+        }
+        .price-card-button.primary {
+            @apply bg-indigo-500 hover:bg-indigo-600 text-white;
+        }
+        .price-card-button.secondary {
+            @apply bg-gray-600 hover:bg-gray-700 text-white;
+        }
+        .price-card-button.tertiary {
+            @apply bg-indigo-500 hover:bg-indigo-600 text-white; /* Usando cor primária para o terceiro botão */
+        }
     </style>
 </head>
-<body class="bg-gray-50 text-gray-800">
+<body class="bg-white text-gray-800">
 
+    <!-- Cabeçalho (Header) -->
     <header class="bg-white shadow-md py-4 px-6 flex justify-between items-center fixed w-full top-0 z-50">
         <div class="flex items-center space-x-3">
+            <!-- Logo ou Título Simples -->
             <svg class="h-8 w-8 text-indigo-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
             </svg>
@@ -50,7 +90,9 @@
                 <li><a href="#home" class="text-gray-600 hover:text-indigo-600 font-medium transition duration-300">Início</a></li>
                 <li><a href="#professores" class="text-gray-600 hover:text-indigo-600 font-medium transition duration-300">Para Professores</a></li>
                 <li><a href="#pais" class="text-gray-600 hover:text-indigo-600 font-medium transition duration-300">Para Pais</a></li>
+                <li><a href="#premium" class="text-gray-600 hover:text-indigo-600 font-medium transition duration-300 font-bold">Premium</a></li>
                 <li><a href="#doacao" class="text-gray-600 hover:text-indigo-600 font-medium transition duration-300">Doação</a></li>
+                <li><a href="#anuncios" class="text-gray-600 hover:text-indigo-600 font-medium transition duration-300">Anúncios</a></li>
                 <li><a href="#sobre" class="text-gray-600 hover:text-indigo-600 font-medium transition duration-300">Sobre</a></li>
                 <li><a href="#contato" class="text-gray-600 hover:text-indigo-600 font-medium transition duration-300">Contato</a></li>
                 <li><a href="#login" class="bg-indigo-500 text-white px-4 py-2 rounded-full text-sm font-semibold hover:bg-indigo-600 transition duration-300">Login/Cadastro</a></li>
@@ -58,9 +100,11 @@
         </nav>
     </header>
 
+    <!-- Conteúdo Principal -->
     <main class="mt-20 py-8 md:py-12">
         <div class="container mx-auto px-4">
 
+            <!-- Seção Hero (Banner Principal) -->
             <section id="home" class="bg-primary-light py-16 md:py-24 text-center rounded-xl shadow-inner mb-8">
                 <div class="container mx-auto px-4">
                     <h2 class="text-4xl md:text-6xl font-extrabold text-primary-dark leading-tight mb-6">
@@ -80,68 +124,102 @@
                 </div>
             </section>
 
+            <!-- Seção Destaques de Cursos (Gratuitos) -->
             <section class="py-16 md:py-24 bg-white rounded-xl shadow-md mt-8">
                 <div class="container mx-auto px-4">
                     <h3 class="text-3xl md:text-4xl font-bold text-center text-indigo-700 mb-12">
-                        Cursos em Destaque para Professores
+                        Cursos Gratuitos em Destaque para Professores
                     </h3>
+                    <p class="text-center text-gray-600 mb-8">Acesso a treinamentos curtos e diretos para impulsionar suas práticas pedagógicas.</p>
                     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                        <div class="bg-sky-50 p-6 rounded-xl shadow-lg border border-sky-200">
-                            <h4 class="text-xl font-semibold text-sky-800 mb-3">Metodologias Ativas para Inclusão</h4>
+                        <!-- Exemplo de Curso Gratuito -->
+                        <div class="bg-primary-light p-6 rounded-xl shadow-lg border border-indigo-200">
+                            <h4 class="text-xl font-semibold text-primary-dark mb-3">Metodologias Ativas para Inclusão (Básico)</h4>
                             <p class="text-gray-600 text-sm mb-4">Aprenda técnicas como Sala de Aula Invertida e Aprendizagem Baseada em Projetos, adaptadas para a inclusão de alunos com TEA.</p>
-                            <span class="inline-block bg-sky-200 text-sky-800 text-xs px-2 py-1 rounded-full">40h</span>
-                            <a href="#lista-cursos" class="block mt-5 text-center text-sky-600 hover:text-sky-800 font-medium">Ver Detalhes &rarr;</a>
+                            <span class="inline-block bg-indigo-200 text-indigo-800 text-xs px-2 py-1 rounded-full">10h</span>
+                            <span class="inline-block bg-indigo-200 text-indigo-800 text-xs px-2 py-1 rounded-full ml-2">GRÁTIS</span>
+                            <a href="#lista-cursos" class="block mt-5 text-center text-indigo-600 hover:text-indigo-800 font-medium">Ver Detalhes &rarr;</a>
                         </div>
-                        <div class="bg-sky-50 p-6 rounded-xl shadow-lg border border-sky-200">
-                            <h4 class="text-xl font-semibold text-sky-800 mb-3">Tecnologias Assistivas na Educação</h4>
+                        <!-- Exemplo de Curso Gratuito -->
+                        <div class="bg-primary-light p-6 rounded-xl shadow-lg border border-indigo-200">
+                            <h4 class="text-xl font-semibold text-primary-dark mb-3">Tecnologias Assistivas (Introdução)</h4>
                             <p class="text-gray-600 text-sm mb-4">Descubra ferramentas digitais e softwares que auxiliam no aprendizado de alunos com diversas necessidades.</p>
-                            <span class="inline-block bg-sky-200 text-sky-800 text-xs px-2 py-1 rounded-full">30h</span>
-                            <a href="#lista-cursos" class="block mt-5 text-center text-sky-600 hover:text-sky-800 font-medium">Ver Detalhes &rarr;</a>
+                            <span class="inline-block bg-indigo-200 text-indigo-800 text-xs px-2 py-1 rounded-full">8h</span>
+                            <span class="inline-block bg-indigo-200 text-indigo-800 text-xs px-2 py-1 rounded-full ml-2">GRÁTIS</span>
+                            <a href="#lista-cursos" class="block mt-5 text-center text-indigo-600 hover:text-indigo-800 font-medium">Ver Detalhes &rarr;</a>
                         </div>
-                        <div class="bg-sky-50 p-6 rounded-xl shadow-lg border border-sky-200">
-                            <h4 class="text-xl font-semibold text-sky-800 mb-3">Comunicação Aumentativa e Alternativa</h4>
+                        <!-- Exemplo de Curso Gratuito -->
+                        <div class="bg-primary-light p-6 rounded-xl shadow-lg border border-indigo-200">
+                            <h4 class="text-xl font-semibold text-primary-dark mb-3">Comunicação Aumentativa e Alternativa (Fundamentos)</h4>
                             <p class="text-gray-600 text-sm mb-4">Estratégias e ferramentas para apoiar a comunicação de alunos não verbais.</p>
-                            <span class="inline-block bg-sky-200 text-sky-800 text-xs px-2 py-1 rounded-full">25h</span>
-                            <a href="#lista-cursos" class="block mt-5 text-center text-sky-600 hover:text-sky-800 font-medium">Ver Detalhes &rarr;</a>
+                            <span class="inline-block bg-indigo-200 text-indigo-800 text-xs px-2 py-1 rounded-full">12h</span>
+                            <span class="inline-block bg-indigo-200 text-indigo-800 text-xs px-2 py-1 rounded-full ml-2">GRÁTIS</span>
+                            <a href="#lista-cursos" class="block mt-5 text-center text-indigo-600 hover:text-indigo-800 font-medium">Ver Detalhes &rarr;</a>
                         </div>
                     </div>
                     <div class="text-center mt-12">
-                        <a href="#lista-cursos" class="bg-indigo-500 text-white px-6 py-3 rounded-full font-semibold hover:bg-indigo-600 transition duration-300">Ver Todos os Cursos</a>
+                        <a href="#lista-cursos" class="bg-indigo-500 text-white px-6 py-3 rounded-full font-semibold hover:bg-indigo-600 transition duration-300">Ver Todos os Cursos Gratuitos</a>
                     </div>
                 </div>
             </section>
 
+            <!-- Seção Destaques de Vídeos -->
             <section class="py-16 md:py-24 bg-gray-100 rounded-xl shadow-md mt-8">
                 <div class="container mx-auto px-4">
                     <h3 class="text-3xl md:text-4xl font-bold text-center text-indigo-700 mb-12">
                         Vídeos de Atividades Recentes
                     </h3>
                     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                        <!-- Exemplo de Vídeo -->
                         <div class="bg-white rounded-lg shadow-md border border-gray-200 overflow-hidden">
-                            <img src="https://placehold.co/400x225/E0F2F7/2C5282?text=Video+Atividade+1" alt="Video de Atividade Pedagógica" class="w-full h-48 object-cover">
+                            <img src="https://placehold.co/400x225/EEF2FF/3730A3?text=Video+Atividade+1" alt="Video de Atividade Pedagógica" class="w-full h-48 object-cover">
                             <div class="p-4">
                                 <h5 class="text-lg font-semibold text-indigo-700">Brincadeiras Inclusivas no Pátio</h5>
                                 <p class="text-gray-600 text-sm mt-1">Por: Prof. Ana Silva</p>
                                 <p class="text-gray-500 text-xs mt-2">Uma atividade lúdica para integrar todos os alunos no recreio.</p>
                                 <a href="#video-detail-1" class="block mt-4 text-indigo-600 hover:text-indigo-800 font-medium text-sm">Ver Detalhes &rarr;</a>
+                                <span class="text-gray-500 text-xs">5 Comentários</span>
+                            </div>
+                            <!-- Formulário de Comentário (simplificado) -->
+                            <div class="mt-4 pt-4 border-t border-gray-200">
+                                <textarea class="w-full px-3 py-2 text-sm border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-indigo-500" rows="2" placeholder="Deixe seu comentário..."></textarea>
+                                <button class="mt-2 bg-indigo-500 text-white px-4 py-2 rounded-md text-sm hover:bg-indigo-600 transition duration-300">Comentar</button>
                             </div>
                         </div>
+                        <!-- Exemplo de Vídeo -->
                         <div class="bg-white rounded-lg shadow-md border border-gray-200 overflow-hidden">
-                            <img src="https://placehold.co/400x225/E0F2F7/2C5282?text=Video+Atividade+2" alt="Video de Atividade Pedagógica" class="w-full h-48 object-cover">
+                            <img src="https://placehold.co/400x225/EEF2FF/3730A3?text=Video+Atividade+2" alt="Video de Atividade Pedagógica" class="w-full h-48 object-cover">
                             <div class="p-4">
                                 <h5 class="text-lg font-semibold text-indigo-700">Fichas Visuais de Rotina Diária</h5>
                                 <p class="text-gray-600 text-sm mt-1">Por: Prof. João Santos</p>
                                 <p class="text-gray-500 text-xs mt-2">Material para auxiliar na organização da rotina de alunos com TEA.</p>
-                                <a href="#video-detail-2" class="block mt-4 text-indigo-600 hover:text-indigo-800 font-medium text-sm">Ver Detalhes &rarr;</a>
+                                <div class="mt-4 flex justify-between items-center">
+                                    <a href="#video-detail-2" class="text-indigo-600 hover:text-indigo-800 font-medium text-sm">Ver Detalhes &rarr;</a>
+                                    <span class="text-gray-500 text-xs">8 Comentários</span>
+                                </div>
+                                <!-- Formulário de Comentário (simplificado) -->
+                                <div class="mt-4 pt-4 border-t border-gray-200">
+                                    <textarea class="w-full px-3 py-2 text-sm border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-indigo-500" rows="2" placeholder="Deixe seu comentário..."></textarea>
+                                    <button class="mt-2 bg-indigo-500 text-white px-4 py-2 rounded-md text-sm hover:bg-indigo-600 transition duration-300">Comentar</button>
+                                </div>
                             </div>
                         </div>
+                        <!-- Exemplo de Vídeo -->
                         <div class="bg-white rounded-lg shadow-md border border-gray-200 overflow-hidden">
-                            <img src="https://placehold.co/400x225/E0F2F7/2C5282?text=Video+Atividade+3" alt="Video de Atividade Pedagógica" class="w-full h-48 object-cover">
+                            <img src="https://placehold.co/400x225/EEF2FF/3730A3?text=Video+Atividade+3" alt="Video de Atividade Pedagógica" class="w-full h-48 object-cover">
                             <div class="p-4">
                                 <h5 class="text-lg font-semibold text-indigo-700">Inclusão Através da Arte-Terapia</h5>
                                 <p class="text-gray-600 text-sm mt-1">Por: Prof. Carla Dias</p>
                                 <p class="text-gray-500 text-xs mt-2">Projeto de arte-terapia que promove a expressão e interação de alunos diversos.</p>
-                                <a href="#video-detail-3" class="block mt-4 text-indigo-600 hover:text-indigo-800 font-medium text-sm">Ver Detalhes &rarr;</a>
+                                <div class="mt-4 flex justify-between items-center">
+                                    <a href="#video-detail-3" class="text-indigo-600 hover:text-indigo-800 font-medium text-sm">Ver Detalhes &rarr;</a>
+                                    <span class="text-gray-500 text-xs">5 Comentários</span>
+                                </div>
+                                <!-- Formulário de Comentário (simplificado) -->
+                                <div class="mt-4 pt-4 border-t border-gray-200">
+                                    <textarea class="w-full px-3 py-2 text-sm border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-indigo-500" rows="2" placeholder="Deixe seu comentário..."></textarea>
+                                    <button class="mt-2 bg-indigo-500 text-white px-4 py-2 rounded-md text-sm hover:bg-indigo-600 transition duration-300">Comentar</button>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -151,25 +229,28 @@
                 </div>
             </section>
 
+            <!-- Seção Para Professores (Detalhes) -->
             <section id="professores" class="py-16 md:py-24 bg-white rounded-xl shadow-md mt-8">
                 <div class="container mx-auto px-4">
                     <h3 class="text-3xl md:text-4xl font-bold text-center text-indigo-700 mb-12">
                         Para Professores: Capacitação e Colaboração
                     </h3>
                     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
-                        <div class="bg-sky-50 p-6 rounded-xl shadow-lg border border-sky-200 hover:shadow-xl transition duration-300">
-                            <div class="text-sky-600 mb-4">
+                        <!-- Card 1: Treinamentos -->
+                        <div class="bg-primary-light p-6 rounded-xl shadow-lg border border-indigo-200 hover:shadow-xl transition duration-300">
+                            <div class="text-primary-dark mb-4">
                                 <svg class="h-10 w-10 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                                     <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5s3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18s-3.332.477-4.5 1.253" />
                                 </svg>
                             </div>
-                            <h4 class="text-xl font-semibold text-sky-800 mb-3 text-center">Trilhas de Capacitação</h4>
+                            <h4 class="text-xl font-semibold text-primary-dark mb-3 text-center">Trilhas de Capacitação</h4>
                             <p class="text-gray-600 text-center text-sm">
                                 Acesse videoaulas e módulos completos sobre metodologias inclusivas e tecnologias educacionais.
                             </p>
-                            <a href="#lista-cursos" class="block mt-5 text-center text-sky-600 hover:text-sky-800 font-medium">Ver Cursos &rarr;</a>
+                            <a href="#lista-cursos" class="block mt-5 text-center text-indigo-600 hover:text-indigo-800 font-medium">Ver Cursos &rarr;</a>
                         </div>
 
+                        <!-- Card 2: Compartilhar Vídeos -->
                         <div class="bg-purple-50 p-6 rounded-xl shadow-lg border border-purple-200 hover:shadow-xl transition duration-300">
                             <div class="text-purple-600 mb-4">
                                 <svg class="h-10 w-10 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -183,6 +264,7 @@
                             <a href="#upload-video-section" class="block mt-5 text-center text-purple-600 hover:text-purple-800 font-medium">Enviar Vídeo &rarr;</a>
                         </div>
 
+                        <!-- Card 3: Biblioteca de Atividades -->
                         <div class="bg-green-50 p-6 rounded-xl shadow-lg border border-green-200 hover:shadow-xl transition duration-300">
                             <div class="text-green-600 mb-4">
                                 <svg class="h-10 w-10 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -197,9 +279,11 @@
                         </div>
                     </div>
 
+                    <!-- Subseção: Trilhas de Capacitação (Lista de Cursos) -->
                     <div id="lista-cursos" class="bg-sky-100 p-8 rounded-xl shadow-inner mb-16">
                         <h4 class="text-2xl font-bold text-sky-800 mb-6 text-center">Trilhas de Capacitação e Treinamentos</h4>
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <!-- Curso Exemplo 1 -->
                             <div class="bg-white p-5 rounded-lg shadow-md border border-sky-300">
                                 <h5 class="text-lg font-semibold text-sky-700">Metodologias Ativas para Inclusão</h5>
                                 <p class="text-gray-600 text-sm mt-2">Aprenda técnicas como Sala de Aula Invertida e Aprendizagem Baseada em Projetos, adaptadas para a inclusão de alunos com TEA.</p>
@@ -207,6 +291,7 @@
                                 <span class="inline-block bg-sky-200 text-sky-800 text-xs px-2 py-1 rounded-full mt-3 ml-2">Certificado</span>
                                 <a href="#" class="block mt-4 text-sky-600 hover:text-sky-800 font-medium text-sm">Iniciar Curso &rarr;</a>
                             </div>
+                            <!-- Curso Exemplo 2 -->
                             <div class="bg-white p-5 rounded-lg shadow-md border border-sky-300">
                                 <h5 class="text-lg font-semibold text-sky-700">Tecnologias Assistivas na Educação</h5>
                                 <p class="text-gray-600 text-sm mt-2">Descubra ferramentas digitais e softwares que auxiliam no aprendizado de alunos com diversas necessidades.</p>
@@ -217,6 +302,7 @@
                         </div>
                     </div>
 
+                    <!-- Subseção: Compartilhar Suas Atividades (Formulário de Upload de Vídeo) -->
                     <div id="upload-video-section" class="bg-purple-100 p-8 rounded-xl shadow-inner mb-16">
                         <h4 class="text-2xl font-bold text-purple-800 mb-6 text-center">Envie Seu Vídeo de Atividade!</h4>
                         <p class="text-gray-700 mb-6 text-center">Compartilhe suas práticas pedagógicas inovadoras com a comunidade ConectaMente.</p>
@@ -241,12 +327,14 @@
                         </form>
                     </div>
 
+                    <!-- Subseção: Biblioteca de Atividades (Display de Vídeos e Materiais) -->
                     <div id="lista-videos" class="bg-green-100 p-8 rounded-xl shadow-inner">
                         <h4 class="text-2xl font-bold text-green-800 mb-6 text-center">Biblioteca de Atividades e Projetos</h4>
                         <p class="text-gray-700 mb-8 text-center">Explore vídeos e materiais compartilhados por outros professores. Deixe seu comentário!</p>
-                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                            <!-- Vídeo/Material Exemplo 1 -->
                             <div class="bg-white rounded-lg shadow-md border border-green-300 overflow-hidden">
-                                <img src="https://placehold.co/400x225/D1FAE5/065F46?text=Video+Atividade+1" alt="Video de Atividade Pedagógica" class="w-full h-48 object-cover">
+                                <img src="https://placehold.co/400x225/EEF2FF/3730A3?text=Video+Atividade+1" alt="Video de Atividade Pedagógica" class="w-full h-48 object-cover">
                                 <div class="p-4">
                                     <h5 class="text-lg font-semibold text-green-700">Brincadeiras Inclusivas no Pátio</h5>
                                     <p class="text-gray-600 text-sm mt-1">Por: Prof. Ana Silva</p>
@@ -255,14 +343,16 @@
                                         <a href="#video-detail-1" class="text-green-600 hover:text-green-800 font-medium text-sm">Ver Detalhes &rarr;</a>
                                         <span class="text-gray-500 text-xs">5 Comentários</span>
                                     </div>
+                                    <!-- Formulário de Comentário (simplificado) -->
                                     <div class="mt-4 pt-4 border-t border-gray-200">
                                         <textarea class="w-full px-3 py-2 text-sm border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-green-500" rows="2" placeholder="Deixe seu comentário..."></textarea>
                                         <button class="mt-2 bg-green-500 text-white px-4 py-2 rounded-md text-sm hover:bg-green-600 transition duration-300">Comentar</button>
                                     </div>
                                 </div>
                             </div>
+                            <!-- Vídeo/Material Exemplo 2 -->
                             <div class="bg-white rounded-lg shadow-md border border-green-300 overflow-hidden">
-                                <img src="https://placehold.co/400x225/D1FAE5/065F46?text=Material+Didatico+TEA" alt="Material Didático TEA" class="w-full h-48 object-cover">
+                                <img src="https://placehold.co/400x225/EEF2FF/3730A3?text=Material+Didatico+TEA" alt="Material Didático TEA" class="w-full h-48 object-cover">
                                 <div class="p-4">
                                     <h5 class="text-lg font-semibold text-green-700">Fichas Visuais de Rotina Diária</h5>
                                     <p class="text-gray-600 text-sm mt-1">Por: Prof. João Santos</p>
@@ -271,14 +361,16 @@
                                         <a href="#" class="text-green-600 hover:text-green-800 font-medium text-sm">Ver Detalhes &rarr;</a>
                                         <span class="text-gray-500 text-xs">8 Comentários</span>
                                     </div>
+                                     <!-- Formulário de Comentário (simplificado) -->
                                      <div class="mt-4 pt-4 border-t border-gray-200">
                                         <textarea class="w-full px-3 py-2 text-sm border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-green-500" rows="2" placeholder="Deixe seu comentário..."></textarea>
                                         <button class="mt-2 bg-green-500 text-white px-4 py-2 rounded-md text-sm hover:bg-green-600 transition duration-300">Comentar</button>
                                     </div>
                                 </div>
                             </div>
+                             <!-- Vídeo/Material Exemplo 3 -->
                              <div class="bg-white rounded-lg shadow-md border border-green-300 overflow-hidden">
-                                <img src="https://placehold.co/400x225/D1FAE5/065F46?text=Projeto+Inclusao+Arte" alt="Projeto Inclusão Arte" class="w-full h-48 object-cover">
+                                <img src="https://placehold.co/400x225/EEF2FF/3730A3?text=Projeto+Inclusao+Arte" alt="Projeto Inclusão Arte" class="w-full h-48 object-cover">
                                 <div class="p-4">
                                     <h5 class="text-lg font-semibold text-green-700">Inclusão Através da Arte-Terapia</h5>
                                     <p class="text-gray-600 text-sm mt-1">Por: Prof. Carla Dias</p>
@@ -287,6 +379,7 @@
                                         <a href="#" class="text-green-600 hover:text-green-800 font-medium text-sm">Ver Detalhes &rarr;</a>
                                         <span class="text-gray-500 text-xs">3 Comentários</span>
                                     </div>
+                                     <!-- Formulário de Comentário (simplificado) -->
                                      <div class="mt-4 pt-4 border-t border-gray-200">
                                         <textarea class="w-full px-3 py-2 text-sm border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-green-500" rows="2" placeholder="Deixe seu comentário..."></textarea>
                                         <button class="mt-2 bg-green-500 text-white px-4 py-2 rounded-md text-sm hover:bg-green-600 transition duration-300">Comentar</button>
@@ -298,12 +391,14 @@
                 </div>
             </section>
 
+            <!-- Seção Para Pais -->
             <section id="pais" class="py-16 md:py-24 bg-primary-light rounded-xl shadow-md mt-8">
                 <div class="container mx-auto px-4">
                     <h3 class="text-3xl md:text-4xl font-bold text-center text-primary-dark mb-12">
                         Para Pais: Comunidade de Apoio e Troca
                     </h3>
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto mb-16">
+                        <!-- Card 1: Fórum de Histórias e Dúvidas -->
                         <div class="bg-white p-6 rounded-xl shadow-lg border border-gray-200 hover:shadow-xl transition duration-300">
                             <div class="text-indigo-600 mb-4">
                                 <svg class="h-10 w-10 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -317,6 +412,7 @@
                             <a href="#forum-section" class="block mt-5 text-center text-indigo-600 hover:text-indigo-800 font-medium">Acessar Fórum &rarr;</a>
                         </div>
 
+                        <!-- Card 2: Recursos e Guias Práticos -->
                         <div class="bg-white p-6 rounded-xl shadow-lg border border-gray-200 hover:shadow-xl transition duration-300">
                             <div class="text-indigo-600 mb-4">
                                 <svg class="h-10 w-10 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -331,9 +427,11 @@
                         </div>
                     </div>
 
+                    <!-- Subseção: Fórum de Histórias e Dúvidas -->
                     <div id="forum-section" class="bg-indigo-100 p-8 rounded-xl shadow-inner mt-16 mb-16">
                         <h4 class="text-2xl font-bold text-indigo-800 mb-6 text-center">Fórum da Comunidade: Compartilhe e Apoie</h4>
                         <p class="text-gray-700 mb-8 text-center">Participe das discussões ou inicie um novo tópico.</p>
+                        <!-- Novo Tópico do Fórum (Formulário) -->
                         <div class="mb-8 p-6 bg-white rounded-lg shadow-md border border-indigo-200">
                             <h5 class="text-xl font-semibold text-indigo-700 mb-4">Iniciar Novo Tópico</h5>
                             <form class="space-y-4">
@@ -352,36 +450,39 @@
                                 </div>
                             </form>
                         </div>
+                        <!-- Tópico do Fórum Exemplo 1 -->
                         <div class="bg-white p-6 rounded-lg shadow-md border border-indigo-200 mb-4">
                             <h5 class="text-lg font-semibold text-indigo-700">Desafios na Comunicação Não Verbal</h5>
                             <p class="text-gray-600 text-sm mt-1">Por: Maria Oliveira - há 2 dias</p>
                             <p class="text-gray-500 text-xs mt-2">Meu filho tem dificuldades em se expressar. Alguém tem dicas de atividades ou ferramentas?</p>
                             <div class="mt-4 pt-4 border-t border-gray-200">
-                                <p class="text-gray-700 text-sm mb-2">**Comentários:**</p>
+                                <p class="text-gray-700 text-sm mb-2">Comentários:</p>
                                 <div class="bg-gray-50 p-3 rounded-md mb-2">
-                                    <p class="text-gray-800 text-sm">**João Silva:** Tentei PECS com meu filho e funcionou muito bem! Existem apps também.</p>
+                                    <p class="text-gray-800 text-sm">João Silva: Tentei PECS com meu filho e funcionou muito bem! Existem apps também.</p>
                                 </div>
                                 <div class="bg-gray-50 p-3 rounded-md">
-                                    <p class="text-gray-800 text-sm">**Ana Costa:** A terapia ocupacional tem ajudado muito na comunicação alternativa.</p>
+                                    <p class="text-gray-800 text-sm">Ana Costa: A terapia ocupacional tem ajudado muito na comunicação alternativa.</p>
                                 </div>
                                 <textarea class="w-full px-3 py-2 text-sm border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-indigo-500 mt-3" rows="2" placeholder="Adicione seu comentário..."></textarea>
                                 <button class="mt-2 bg-indigo-500 text-white px-4 py-2 rounded-md text-sm hover:bg-indigo-600 transition duration-300">Comentar</button>
                             </div>
                         </div>
+                        <!-- Tópico do Fórum Exemplo 2 -->
                         <div class="bg-white p-6 rounded-lg shadow-md border border-indigo-200">
                             <h5 class="text-lg font-semibold text-indigo-700">Rotinas Visuais: Como Organizar o Dia a Dia?</h5>
                             <p class="text-gray-600 text-sm mt-1">Por: Pedro Almeida - há 5 dias</p>
                             <p class="text-gray-500 text-xs mt-2">Minha filha se beneficia muito de rotinas visuais. Quais apps ou materiais vocês usam?</p>
                             <div class="mt-4 pt-4 border-t border-gray-200">
-                                <p class="text-gray-700 text-sm mb-2">**Comentários:**</p>
+                                <p class="text-gray-700 text-sm mb-2">Comentários:</p>
                                 <div class="bg-gray-50 p-3 rounded-md mb-2">
-                                    <p class="text-gray-800 text-sm">**Carla Souza:** Eu uso o app 'Visual Schedule' e imprimo as imagens. Ajuda demais!</p>
+                                    <p class="text-gray-800 text-sm">Carla Souza: Eu uso o app 'Visual Schedule' e imprimo as imagens. Ajuda demais!</p>
                                 </div>
                                 <textarea class="w-full px-3 py-2 text-sm border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-indigo-500 mt-3" rows="2" placeholder="Adicione seu comentário..."></textarea>
                                 <button class="mt-2 bg-indigo-500 text-white px-4 py-2 rounded-md text-sm hover:bg-indigo-600 transition duration-300">Comentar</button>
                             </div>
                         </div>
                     </div>
+                    <!-- Subseção: Recursos e Guias Práticos -->
                     <div id="lista-recursos-pais" class="bg-indigo-100 p-8 rounded-xl shadow-inner mt-16">
                         <h4 class="text-2xl font-bold text-indigo-800 mb-6 text-center">Recursos e Guias Práticos para Pais</h4>
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -400,6 +501,160 @@
                 </div>
             </section>
 
+            <!-- Nova Seção: Planos Premium -->
+            <section id="premium" class="py-16 md:py-24 bg-gray-100 rounded-xl shadow-md mt-8">
+                <div class="container mx-auto px-4 text-center">
+                    <h3 class="text-3xl md:text-4xl font-bold text-indigo-700 mb-12">Escolha seu Plano ConectaMente Premium</h3>
+                    <p class="text-lg text-gray-600 max-w-3xl mx-auto mb-10">
+                        Amplie seu acesso a conteúdos exclusivos, suporte especializado e ferramentas avançadas.
+                    </p>
+
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                        <!-- Plano Básico (Gratuito) -->
+                        <div class="price-card bg-gray-800 text-white border border-gray-700"> 
+                            <div class="price-card-header">
+                                <h4 class="text-white">Plano Básico</h4>
+                                <p class="text-4xl font-extrabold text-white mb-2">GRÁTIS</p>
+                                <p class="text-sm text-gray-300">Sempre</p>
+                            </div>
+                            <ul class="price-card-features text-gray-200">
+                                <li>
+                                    <svg class="w-5 h-5 text-green-400 inline-block" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                                    Acesso a Cursos Gratuitos (curtos e diretos)
+                                </li>
+                                <li>
+                                    <svg class="w-5 h-5 text-green-400 inline-block" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                                    Biblioteca de Vídeos de Atividades (acesso básico)
+                                </li>
+                                <li>
+                                    <svg class="w-5 h-5 text-green-400 inline-block" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                                    Fórum da Comunidade (acesso básico)
+                                </li>
+                                <li>
+                                    <svg class="w-5 h-5 text-red-500 inline-block" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd"></path></svg>
+                                    Especializações Completas
+                                </li>
+                                <li>
+                                    <svg class="w-5 h-5 text-red-500 inline-block" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd"></path></svg>
+                                    Videochamadas com Especialistas
+                                </li>
+                            </ul>
+                            <a href="#cadastro-section" class="price-card-button secondary">
+                                Cadastre-se Grátis
+                            </a>
+                        </div>
+
+                        <!-- Plano Premium para Professores -->
+                        <div class="price-card bg-gray-800 text-white border border-gray-700"> 
+                            <div class="price-card-header">
+                                <h4 class="text-white">Plano Professor Premium</h4>
+                                <p class="text-5xl font-extrabold text-white mb-2">R$49<span class="text-2xl font-normal">/mês</span></p>
+                                <p class="text-sm text-gray-300">Ou R$490/ano (2 meses grátis)</p>
+                            </div>
+                            <ul class="price-card-features text-gray-200">
+                                <li>
+                                    <svg class="w-5 h-5 text-green-400 inline-block" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                                    Todos os benefícios do Plano Básico
+                                </li>
+                                <li>
+                                    <svg class="w-5 h-5 text-green-400 inline-block" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                                    Acesso a Especializações Completas (cursos avançados)
+                                </li>
+                                <li>
+                                    <svg class="w-5 h-5 text-green-400 inline-block" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                                    Acesso ilimitado à Biblioteca de Vídeos
+                                </li>
+                                <li>
+                                    <svg class="w-5 h-5 text-green-400 inline-block" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                                    Materiais didáticos premium para download
+                                </li>
+                                <li>
+                                    <svg class="w-5 h-5 text-green-400 inline-block" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                                    Suporte prioritário no fórum
+                                </li>
+                            </ul>
+                            <a href="#" class="price-card-button primary">
+                                Assinar Plano Professor
+                            </a>
+                        </div>
+
+                        <!-- Plano Premium para Pais -->
+                        <div class="price-card bg-gray-800 text-white border border-gray-700"> 
+                            <div class="price-card-header">
+                                <h4 class="text-white">Plano Pais Premium</h4>
+                                <p class="text-5xl font-extrabold text-white mb-2">R$79<span class="text-2xl font-normal">/mês</span></p>
+                                <p class="text-sm text-gray-300">Ou R$790/ano (2 meses grátis)</p>
+                            </div>
+                            <ul class="price-card-features text-gray-200">
+                                <li>
+                                    <svg class="w-5 h-5 text-green-500 inline-block" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                                    Todos os benefícios do Plano Básico
+                                </li>
+                                <li>
+                                    <svg class="w-5 h-5 text-green-500 inline-block" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                                    2 Videochamadas/mês com Psicólogos especializados
+                                </li>
+                                <li>
+                                    <svg class="w-5 h-5 text-green-500 inline-block" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                                    Acesso a Webinars Exclusivos com especialistas em TEA
+                                </li>
+                                <li>
+                                    <svg class="w-5 h-5 text-green-500 inline-block" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                                    Biblioteca de Recursos Premium para Pais
+                                </li>
+                                <li>
+                                    <svg class="w-5 h-5 text-green-500 inline-block" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                                    Suporte prioritário no fórum
+                                </li>
+                            </ul>
+                            <a href="#" class="price-card-button tertiary">
+                                Assinar Plano Pais
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Seção Doação -->
+            <section id="doacao" class="py-16 md:py-24 bg-yellow-50 rounded-xl shadow-md mt-8">
+                <div class="container mx-auto px-4 text-center">
+                    <h3 class="text-3xl md:text-4xl font-bold text-yellow-800 mb-8">Apoie Nossa Causa: Faça uma Doação!</h3>
+                    <p class="text-lg text-gray-700 max-w-3xl mx-auto mb-6">
+                        Sua contribuição é fundamental para mantermos a ConectaMente ativa, expandindo nossos recursos e alcançando mais famílias e educadores. Cada doação, por menor que seja, faz uma grande diferença na construção de um futuro mais inclusivo.
+                    </p>
+                    <a href="https://pag.ae/7-Z-Y-X" target="_blank" class="bg-yellow-600 text-white px-8 py-3 rounded-full font-semibold text-lg hover:bg-yellow-700 transition duration-300 shadow-lg">
+                        Doar Agora &hearts;
+                    </a>
+                    <p class="text-sm text-gray-600 mt-4">Você será redirecionado para uma plataforma de pagamento segura.</p>
+                </div>
+            </section>
+
+            <!-- Seção Anúncios -->
+            <section id="anuncios" class="py-16 md:py-24 bg-gray-100 rounded-xl shadow-md mt-8">
+                <div class="container mx-auto px-4 text-center">
+                    <h3 class="text-3xl md:text-4xl font-bold text-indigo-700 mb-8">Anúncios e Parcerias</h3>
+                    <p class="text-lg text-gray-700 max-w-3xl mx-auto mb-6">
+                        Interessado em divulgar produtos ou serviços relevantes para a nossa comunidade de educadores e pais? Entre em contato para saber mais sobre nossas opções de parceria e anúncios.
+                    </p>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+                        <div class="bg-white p-6 rounded-xl shadow-lg border border-gray-200">
+                            <h4 class="text-xl font-semibold text-indigo-700 mb-3">Anúncio Exemplo 1</h4>
+                            <img src="https://placehold.co/400x150/D1D5DB/4B5563?text=Seu+Anuncio+Aqui" alt="Anúncio Exemplo" class="w-full rounded-md mb-4">
+                            <p class="text-gray-600 text-sm">Divulgue seu material didático ou serviço de apoio educacional.</p>
+                        </div>
+                        <div class="bg-white p-6 rounded-xl shadow-lg border border-gray-200">
+                            <h4 class="text-xl font-semibold text-indigo-700 mb-3">Anúncio Exemplo 2</h4>
+                            <img src="https://placehold.co/400x150/D1D5DB/4B5563?text=Sua+Marca+Aqui" alt="Anúncio Exemplo" class="w-full rounded-md mb-4">
+                            <p class="text-gray-600 text-sm">Alcance pais e professores engajados com a inclusão.</p>
+                        </div>
+                    </div>
+                    <a href="#contato" class="bg-indigo-500 text-white px-8 py-3 rounded-full font-semibold text-lg hover:bg-indigo-600 transition duration-300 shadow-lg mt-12 inline-block">
+                        Saiba Mais sobre Anúncios
+                    </a>
+                </div>
+            </section>
+
+            <!-- Seção Login/Cadastro (Duplicada para ser um ponto de ancoragem) -->
             <section id="login" class="py-16 md:py-24 bg-gray-100 rounded-xl shadow-md mt-8">
                 <div class="container mx-auto px-4 max-w-xl bg-white p-8 rounded-xl shadow-lg border border-gray-200">
                     <h3 class="text-3xl font-bold text-center text-indigo-700 mb-8">Acesse ou Cadastre-se</h3>
@@ -428,6 +683,7 @@
                 </div>
             </section>
 
+            <!-- Seção Cadastro (Duplicada para ser um ponto de ancoragem) -->
             <section id="cadastro-section" class="py-16 md:py-24 bg-gray-50 rounded-xl shadow-md mt-8">
                 <div class="container mx-auto px-4 max-w-xl bg-white p-8 rounded-xl shadow-lg border border-gray-200">
                     <h3 class="text-3xl font-bold text-center text-indigo-700 mb-8">Crie sua Conta</h3>
@@ -466,21 +722,8 @@
                     </form>
                 </div>
             </section>
-            
-            <section id="doacao" class="py-16 md:py-24 bg-accent rounded-xl shadow-md mt-8">
-                <div class="container mx-auto px-4 text-center">
-                    <h3 class="text-3xl md:text-4xl font-bold text-accent-dark mb-8">Apoie o Projeto ConectaMente</h3>
-                    <p class="text-lg text-gray-700 max-w-3xl mx-auto mb-6">
-                        Sua doação é fundamental para mantermos a plataforma ConectaMente gratuita, acessível e sempre atualizada com novos cursos, materiais e recursos para nossa comunidade.
-                    </p>
-                    <p class="text-lg text-gray-700 max-w-3xl mx-auto mb-10">
-                        Com sua ajuda, podemos alcançar mais famílias e educadores, fortalecendo a rede de apoio e promovendo uma educação verdadeiramente inclusiva.
-                    </p>
-                    <a href="#link-da-plataforma-de-doacao" class="bg-indigo-600 text-white px-8 py-3 rounded-full font-semibold text-lg hover:bg-indigo-700 transition duration-300 shadow-lg">
-                        Apoiar o Projeto
-                    </a>
-                </div>
-            </section>
+
+            <!-- Seção Sobre Nós -->
             <section id="sobre" class="py-16 md:py-24 bg-white rounded-xl shadow-md mt-8">
                 <div class="container mx-auto px-4 text-center">
                     <h3 class="text-3xl md:text-4xl font-bold text-indigo-700 mb-8">Sobre a ConectaMente</h3>
@@ -493,6 +736,7 @@
                 </div>
             </section>
 
+            <!-- Seção Contato -->
             <section id="contato" class="py-16 md:py-24 bg-gray-100 rounded-xl shadow-md mt-8">
                 <div class="container mx-auto px-4 max-w-2xl bg-white p-8 rounded-xl shadow-lg border border-gray-200">
                     <h3 class="text-3xl font-bold text-center text-indigo-700 mb-8">Entre em Contato</h3>
@@ -518,6 +762,7 @@
                 </div>
             </section>
 
+            <!-- Seção Chamada para Ação Final -->
             <section class="py-16 md:py-24 bg-indigo-700 text-white text-center rounded-t-xl shadow-inner mt-8">
                 <div class="container mx-auto px-4">
                     <h3 class="text-3xl md:text-4xl font-bold mb-6">Junte-se à Nossa Comunidade ConectaMente!</h3>
@@ -532,6 +777,7 @@
         </div>
     </main>
 
+    <!-- Rodapé (Footer) -->
     <footer class="bg-gray-900 text-gray-400 py-8 px-6 text-center mt-auto">
         <div class="container mx-auto">
             <p>&copy; 2025 ConectaMente. Todos os direitos reservados.</p>
